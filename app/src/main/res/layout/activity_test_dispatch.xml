@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.stew.androidtest.testfordispatch.A_ViewGroup xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#cccccc">
+
+    <com.stew.androidtest.testfordispatch.B_ViewGroup
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:background="#666666">
+
+        <com.stew.androidtest.testfordispatch.C_View
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="#6495ED" />
+
+    </com.stew.androidtest.testfordispatch.B_ViewGroup>
+
+</com.stew.androidtest.testfordispatch.A_ViewGroup>

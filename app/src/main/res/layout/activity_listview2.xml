@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+<!--    <com.stew.androidtest.testforlistview.MyHSV-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent">-->
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:orientation="vertical">-->
+
+<!--            <ListView-->
+<!--                android:id="@+id/ls"-->
+<!--                android:layout_width="600dp"-->
+<!--                android:layout_height="match_parent" />-->
+<!--        </LinearLayout>-->
+<!--    </com.stew.androidtest.testforlistview.MyHSV>-->
+
+
+    <com.stew.androidtest.testforlistview.MySV
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <View
+                android:background="@color/purple_500"
+                android:layout_width="match_parent"
+                android:layout_height="500dp"/>
+
+            <com.stew.androidtest.testforlistview.MyListView2
+                android:id="@+id/ls"
+                android:layout_width="match_parent"
+                android:layout_height="500dp" />
+
+        </LinearLayout>
+    </com.stew.androidtest.testforlistview.MySV>
+
+
+
+</LinearLayout>

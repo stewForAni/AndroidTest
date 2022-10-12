@@ -1,0 +1,7 @@
+include ':mytestlibrary'
+include ':mylibrary'
+include ':androidtest'
+include ':androidtest'
+include ':mylibrary'
+include ':app'
+rootProject.name = "AndroidTest"
