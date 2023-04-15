@@ -8,6 +8,7 @@
         <item name="android:textColor">#ffffff</item>
         <item name="android:textSize">12sp</item>
        <item name="android:padding">10dp</item>
+
     </style>
 
     <style name="style_AceKid_Loading">

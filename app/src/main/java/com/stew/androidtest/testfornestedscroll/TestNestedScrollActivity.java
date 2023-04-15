@@ -1,6 +1,7 @@
 package com.stew.androidtest.testfornestedscroll;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -28,7 +29,7 @@ public class TestNestedScrollActivity extends AppCompatActivity {
         setContentView(R.layout.activity_nested);
 
         List<String> list = new ArrayList<>();
-        for (int i = 0; i < 20; i++) {
+        for (int i = 0; i < 50; i++) {
             list.add(i + ".item view");
         }
 
@@ -39,6 +40,16 @@ public class TestNestedScrollActivity extends AppCompatActivity {
         recyclerView.setAdapter(rvAdapter);
         rvAdapter.setData(list);
         rvAdapter.notifyDataSetChanged();
+
+        new Thread(() -> {
+            try {
+                Thread.sleep(3000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            Log.d("MyImg", "run: ");
+            runOnUiThread(() -> rvAdapter.notifyDataSetChanged());
+        }).start();
     }
 
 }

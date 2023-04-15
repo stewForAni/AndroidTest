@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.stew.androidtest">
 
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+<!--    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />-->
+<!--    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />-->
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="com.stew.pro" />
@@ -18,10 +18,11 @@
         android:label="@string/app_name"
         android:theme="@style/Theme.AndroidTest">
 
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:screenOrientation="portrait"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -29,6 +30,7 @@
         <activity
             android:name=".testforactivity.Test1Activity"
             android:launchMode="singleInstance"
+            android:taskAffinity="com.stew.androidtest11"
             android:screenOrientation="portrait" />
 
         <activity
@@ -114,12 +116,19 @@
 
         <activity android:name=".testfornestedscroll.TestNestedScrollActivity" />
 
+        <activity android:name=".testforstorage.TestStorageActivity"/>
+
+        <activity android:name=".testforwxexit.TestWxAcExitActivity"
+            android:theme="@style/WxExitTheme"
+            android:process="com.stew.mutiprocess"/>
+
 
         <!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////// -->
         <!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 
 
-        <receiver android:name=".testforremoteview.ExampleAppWidgetProvider">
+        <receiver android:name=".testforremoteview.ExampleAppWidgetProvider"
+            android:exported="true">
             <intent-filter>
                 <action android:name="com.stew.androidtest.action.CLICK" />
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
@@ -132,7 +141,8 @@
 
         <service
             android:name=".testforbinder.TestBinderServer"
-            android:process=":stew_server">
+            android:process=":stew_server"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.stew_server" />
             </intent-filter>
@@ -140,7 +150,8 @@
 
         <service
             android:name=".testforbinder.TestBinderProxyServer"
-            android:process=":stew_proxy_server">
+            android:process=":stew_proxy_server"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.stew_proxy_server" />
             </intent-filter>
@@ -148,7 +159,8 @@
 
         <service
             android:name=".testforbinder.TestAIDLBinderProxyServer"
-            android:process=":stew_proxy_server">
+            android:process=":stew_proxy_server"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.stew_aidl_proxy_server" />
             </intent-filter>

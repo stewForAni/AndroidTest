@@ -35,7 +35,10 @@ public class C_View extends View {
                 Log.i("C_View","dispatchTouchEvent_ACTION_UP");
                 break;
         }
-        return super.dispatchTouchEvent(event);
+
+        boolean a = super.dispatchTouchEvent(event);
+        //Log.d("C_View", "dispatchTouchEvent: " + a);
+        return a;
     }
 
     @Override

@@ -4,9 +4,12 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
+import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import androidx.annotation.Nullable;
+
+import java.lang.reflect.Field;
 
 /**
  * Created by stew on 2/28/22.
@@ -35,20 +38,40 @@ public class A_ViewGroup extends LinearLayout {
                 Log.d("A_ViewGroup", "dispatchTouchEvent_ACTION_UP");
                 break;
         }
-        return super.dispatchTouchEvent(ev);
+
+        boolean a = super.dispatchTouchEvent(ev);
+        //Log.d("A_ViewGroup", "dispatchTouchEvent: " + a);
+
+        //mFirstTouchTarget
+        //getPri();
+
+        return a;
+    }
+
+    private void getPri() {
+        Field fieldPassword;
+        try {
+            fieldPassword = ViewGroup.class.getDeclaredField("mFirstTouchTarget");
+            fieldPassword.setAccessible(true);
+            Log.d("A_ViewGroup", "hook1---------: " + fieldPassword.get(this));
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
-        switch (ev.getAction()){
+        switch (ev.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                Log.d("A_ViewGroup","onInterceptTouchEvent_ACTION_DOWN");
+                Log.d("A_ViewGroup", "onInterceptTouchEvent_ACTION_DOWN");
                 break;
             case MotionEvent.ACTION_MOVE:
-                Log.d("A_ViewGroup","onInterceptTouchEvent_ACTION_MOVE");
+                Log.d("A_ViewGroup", "onInterceptTouchEvent_ACTION_MOVE");
                 break;
             case MotionEvent.ACTION_UP:
-                Log.d("A_ViewGroup","onInterceptTouchEvent_ACTION_UP");
+                Log.d("A_ViewGroup", "onInterceptTouchEvent_ACTION_UP");
                 break;
         }
         return super.onInterceptTouchEvent(ev);
@@ -56,15 +79,15 @@ public class A_ViewGroup extends LinearLayout {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        switch (event.getAction()){
+        switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                Log.d("A_ViewGroup","onTouchEvent_ACTION_DOWN");
+                Log.d("A_ViewGroup", "onTouchEvent_ACTION_DOWN");
                 break;
             case MotionEvent.ACTION_MOVE:
-                Log.d("A_ViewGroup","onTouchEvent_ACTION_MOVE");
+                Log.d("A_ViewGroup", "onTouchEvent_ACTION_MOVE");
                 break;
             case MotionEvent.ACTION_UP:
-                Log.d("A_ViewGroup","onTouchEvent_ACTION_UP");
+                Log.d("A_ViewGroup", "onTouchEvent_ACTION_UP");
                 break;
         }
         return super.onTouchEvent(event);

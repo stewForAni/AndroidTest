@@ -1,15 +1,22 @@
 package com.stew.androidtest;
 
+import android.content.ContentValues;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.media.MediaFormat;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -30,12 +37,19 @@ import com.stew.androidtest.testforremoteview.TestNotifyActivity;
 import com.stew.androidtest.testforrxjava.TestRxjavaActivity;
 import com.stew.androidtest.testforserialize.TestParcelableActivity;
 import com.stew.androidtest.testforserialize.TestSerializeActivity;
+import com.stew.androidtest.testforstorage.TestStorageActivity;
 import com.stew.androidtest.testforviewmeasure.TestCustomViewActivity;
 import com.stew.androidtest.testforviewmeasure.TestViewMeasureActivity;
 import com.stew.androidtest.testforviewscroll.TestViewScrollActivity;
 import com.stew.androidtest.testforwindow.TestWindowActivity;
 
 import com.stew.androidtest.testforhotfix.TestCLassLoaderForHotfixActivity;
+import com.stew.androidtest.testforwxexit.TestWxAcExitActivity;
+
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.OutputStream;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -120,46 +134,55 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.tx_nested).setOnClickListener((v) ->
                 startActivity(new Intent(MainActivity.this, TestNestedScrollActivity.class)));
 
+        findViewById(R.id.tx_storage).setOnClickListener((v) ->
+                startActivity(new Intent(MainActivity.this, TestStorageActivity.class)));
 
-        if (alertDialog == null) {
-            AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            final View customLayout = getLayoutInflater().inflate(R.layout.layout_loading_dialog, null);
-            builder.setView(customLayout);
-            alertDialog = builder.create();
-            if (alertDialog.getWindow() == null) {
-                return;
-            }
-            alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        }
-        alertDialog.show();
+        findViewById(R.id.tx_wx_exit).setOnClickListener((v) ->
+                startActivity(new Intent(MainActivity.this, TestWxAcExitActivity.class)));
 
-        getWindow().getDecorView().findViewById(android.R.id.content).setVisibility(View.INVISIBLE);
-        new Thread(() -> {
-            try {
-                //Thread.sleep(2000);
-                runOnUiThread(() -> {
-                    alertDialog.cancel();
-                    getWindow().getDecorView().findViewById(android.R.id.content).setVisibility(View.VISIBLE);
-                });
+        //-------------------------//-------------------------//-------------------------//-------------------------
+//        if (alertDialog == null) {
+//            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+//            final View customLayout = getLayoutInflater().inflate(R.layout.layout_loading_dialog, null);
+//            builder.setView(customLayout);
+//            alertDialog = builder.create();
+//            if (alertDialog.getWindow() == null) {
+//                return;
+//            }
+//            alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+//        }
+//        alertDialog.show();
 
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }).start();
+//        getWindow().getDecorView().findViewById(android.R.id.content).setVisibility(View.INVISIBLE);
+//        new Thread(() -> {
+//            try {
+//                Thread.sleep(2000);
+//                runOnUiThread(() -> {
+//                    alertDialog.cancel();
+//                    getWindow().getDecorView().findViewById(android.R.id.content).setVisibility(View.VISIBLE);
+//                });
+//
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
+//        }).start();
 
+        fun1();
 
-        Looper.prepare();
-        Handler handler = new Handler() {
+        Handler handler = new Handler(new Handler.Callback() {
             @Override
-            public void handleMessage(Message msg) {
-                super.handleMessage(msg);
-                Log.i(TAG, "child thread, handleMessage: what="+msg.what);
+            public boolean handleMessage(@NonNull Message msg) {
+
+                fun1();
+
+                return false;
             }
-        };
+        });
+    }
 
-        Looper.loop();
+    private void fun1() {
 
-        handler.sendMessage()
+
     }
 
 }

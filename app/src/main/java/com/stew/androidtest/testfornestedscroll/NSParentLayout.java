@@ -84,7 +84,7 @@ public class NSParentLayout extends LinearLayout implements NestedScrollingParen
     @Override
     public void onNestedPreScroll(@NonNull View target, int dx, int dy, @NonNull int[] consumed) {
         Log.d(TAG, "onNestedPreScroll: getScrollY = " + getScrollY());
-        //topView刚好要消失
+        //topView刚好要消失（刚好要开始滑动）
         boolean FLAG_TOP_ON = dy > 0 && getScrollY() < topViewHeight;
         //topView刚好要出现
         boolean FLAG_TOP_OFF = dy < 0 && getScrollY() > 0 && !target.canScrollVertically(-1);
