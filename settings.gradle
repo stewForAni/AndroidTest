@@ -5,3 +5,4 @@ include ':androidtest'
 include ':mylibrary'
 include ':app'
 rootProject.name = "AndroidTest"
+include ':asm_life_plugin'

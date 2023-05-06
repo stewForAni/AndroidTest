@@ -1,7 +1,23 @@
-plugins {
-    id 'com.android.application'
-}
+
+apply plugin: 'com.android.application'
 apply plugin: 'dagger.hilt.android.plugin'
+
+apply plugin: 'asm.life.plugin'
+buildscript {
+    repositories {
+        google()
+        jcenter()
+        //自定义插件maven地址
+        maven { url '../asm_life_repo' }
+    }
+    dependencies {
+        //加载自定义插件 group + module + version
+        classpath 'lifeplugin:asm_life_plugin:1.0.0'
+    }
+}
+
+
+
 
 android {
     compileSdkVersion 29
@@ -51,3 +67,18 @@ dependencies {
 
 //    implementation project(':mytestlibrary')
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

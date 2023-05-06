@@ -1,5 +1,6 @@
 package com.stew.androidtest;
 
+import android.app.Instrumentation;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.graphics.Color;
@@ -22,6 +23,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.stew.androidtest.testforactivity.Test1Activity;
 import com.stew.androidtest.testforaidl.TestAIDLActivity;
+import com.stew.androidtest.testforasm.TestAsmActivity;
 import com.stew.androidtest.testforbinder.TestBinderActivity;
 import com.stew.androidtest.testforcontentprovider.TestProvActivity;
 import com.stew.androidtest.testfordagger2.TestDagger2Activity;
@@ -140,6 +142,9 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.tx_wx_exit).setOnClickListener((v) ->
                 startActivity(new Intent(MainActivity.this, TestWxAcExitActivity.class)));
 
+        findViewById(R.id.tx_asm).setOnClickListener((v) ->
+                startActivity(new Intent(MainActivity.this, TestAsmActivity.class)));
+
         //-------------------------//-------------------------//-------------------------//-------------------------
 //        if (alertDialog == null) {
 //            AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -167,20 +172,6 @@ public class MainActivity extends AppCompatActivity {
 //            }
 //        }).start();
 
-        fun1();
-
-        Handler handler = new Handler(new Handler.Callback() {
-            @Override
-            public boolean handleMessage(@NonNull Message msg) {
-
-                fun1();
-
-                return false;
-            }
-        });
-    }
-
-    private void fun1() {
 
 
     }
