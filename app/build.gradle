@@ -2,7 +2,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'dagger.hilt.android.plugin'
 
-apply plugin: 'asm.life.plugin'
+apply plugin: 'stewplugin'
 buildscript {
     repositories {
         google()
