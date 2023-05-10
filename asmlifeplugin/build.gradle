@@ -12,7 +12,7 @@ dependencies {
     implementation 'org.ow2.asm:asm-commons:9.1'
 }
 
-group='asmlifeplugin'
+group='androidplugin'
 version='1.0.0'
 
 uploadArchives {

@@ -2,31 +2,31 @@
 apply plugin: 'com.android.application'
 //apply plugin: 'dagger.hilt.android.plugin'
 
-//apply plugin: 'stewplugin'
-//buildscript {
-//    repositories {
-//        google()
-//        jcenter()
-//        //自定义插件maven地址
-//        maven { url '../asm_life_repo' }
-//    }
-//    dependencies {
-//        //加载自定义插件 group + module + version
-//        classpath 'lifeplugin:asm_life_plugin:1.0.0'
-//    }
-//}
+apply plugin: 'activitylife'
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+        //自定义插件maven地址
+        maven { url '../asmliferepo' }
+    }
+    dependencies {
+        //加载自定义插件 group + module + version
+        classpath 'androidplugin:asmlifeplugin:1.0.0'
+    }
+}
 
 
 
 
 android {
-    compileSdkVersion 30
-    buildToolsVersion '30.0.2'
+    compileSdkVersion 31
+    buildToolsVersion '31.0.0'
 
     defaultConfig {
         applicationId "com.stew.androidtest"
         minSdkVersion 21
-        targetSdkVersion 30
+        targetSdkVersion 31
         versionCode 1
         versionName "1.0"
     }
