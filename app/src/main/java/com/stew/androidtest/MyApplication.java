@@ -7,13 +7,13 @@ import android.util.Log;
 
 import com.stew.androidtest.util.CommonUtil;
 
-import dagger.hilt.android.HiltAndroidApp;
+//import dagger.hilt.android.HiltAndroidApp;
 
 /**
  * Created by stew on 3/19/22.
  * mail: stewforani@gmail.com
  */
-@HiltAndroidApp
+//@HiltAndroidApp
 public class MyApplication extends Application {
 
     private static MyApplication instance;

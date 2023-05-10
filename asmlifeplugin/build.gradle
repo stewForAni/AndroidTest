@@ -1,25 +1,25 @@
-apply plugin: 'groovy'
-apply plugin: 'maven'
+plugins {
+    id 'groovy'
+    id 'maven'
+}
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation gradleApi()
     implementation localGroovy()
     implementation 'com.android.tools.build:gradle:4.2.2'
-
-    //asm
     implementation 'org.ow2.asm:asm:9.1'
     implementation 'org.ow2.asm:asm-commons:9.1'
 }
 
-group='lifeplugin'
+group='asmlifeplugin'
 version='1.0.0'
 
 uploadArchives {
     repositories {
         mavenDeployer {
             //本地的Maven地址设置
-            repository(url: uri('../asm_life_repo'))
+            repository(url: uri('../asmliferepo'))
         }
     }
 }

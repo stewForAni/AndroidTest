@@ -1,4 +1,4 @@
-package com.stew.mytestlibrary;
+package com.stew.asmlifeplugin;
 
 import org.junit.Test;
 
