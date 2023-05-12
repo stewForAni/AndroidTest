@@ -18,20 +18,26 @@
         android:label="@string/app_name"
         android:theme="@style/Theme.AndroidTest">
 
-        <activity android:name=".MainActivity"
-            android:screenOrientation="portrait"
-            android:exported="true">
+
+        <activity
+            android:exported="true"
+            android:theme="@style/SplashTheme"
+            android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
+        <activity android:name=".MainActivity"
+            android:screenOrientation="portrait"/>
+
+
         <activity
             android:name=".testforactivity.Test1Activity"
             android:launchMode="singleInstance"
             android:taskAffinity="com.stew.androidtest11"
-            android:screenOrientation="portrait" />
+             />
 
         <activity
             android:name=".testforactivity.Test2Activity"

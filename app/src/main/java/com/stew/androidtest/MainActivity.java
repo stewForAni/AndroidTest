@@ -145,6 +145,7 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.tx_asm).setOnClickListener((v) ->
                 startActivity(new Intent(MainActivity.this, TestAsmActivity.class)));
 
+        Log.d(TAG, "onCreate: 111");
         //-------------------------//-------------------------//-------------------------//-------------------------
 //        if (alertDialog == null) {
 //            AlertDialog.Builder builder = new AlertDialog.Builder(this);
