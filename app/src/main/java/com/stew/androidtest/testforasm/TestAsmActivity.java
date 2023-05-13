@@ -10,9 +10,7 @@ import com.stew.androidtest.R;
  * mail: stewforani@gmail.com
  */
 public class TestAsmActivity  extends AppCompatActivity {
-
     private static final String TAG = TestAsmActivity.class.getName();
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

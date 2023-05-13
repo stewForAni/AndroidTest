@@ -51,6 +51,7 @@ import com.stew.androidtest.testforwxexit.TestWxAcExitActivity;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.OutputStream;
 
 
@@ -145,7 +146,30 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.tx_asm).setOnClickListener((v) ->
                 startActivity(new Intent(MainActivity.this, TestAsmActivity.class)));
 
-        Log.d(TAG, "onCreate: 111");
+
+
+//        //内
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+//            Log.d("test file", "getDataDir: " + getDataDir());
+//        }
+//
+//        Log.d("test file", "getFilesDir: " + getFilesDir());
+//
+//        //外私
+//        Log.d("test file", "getExternalFilesDir: " + getExternalFilesDir(null));
+//
+//        File externalFilesDir = getDataDir();
+//        File file = new File(externalFilesDir, "stew.txt");
+//        try {
+//            FileOutputStream outputStream = new FileOutputStream(file);
+//            outputStream.write(65);
+//            outputStream.flush();
+//            outputStream.close();
+//        } catch (Exception e) {
+//            throw new RuntimeException(e);
+//        }
+
+
         //-------------------------//-------------------------//-------------------------//-------------------------
 //        if (alertDialog == null) {
 //            AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -172,7 +196,6 @@ public class MainActivity extends AppCompatActivity {
 //                e.printStackTrace();
 //            }
 //        }).start();
-
 
 
     }
