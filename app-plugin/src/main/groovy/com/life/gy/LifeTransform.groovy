@@ -17,7 +17,7 @@ import org.objectweb.asm.ClassWriter
 public class LifeTransform extends Transform {
     @Override
     String getName() {
-        return "ActivityLifeTransform"
+        return "LifeTransform"
     }
 
     @Override
