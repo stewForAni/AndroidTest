@@ -1,2 +1,2 @@
 # AndroidTest
-Android Test with Java
+Android Function Test in Java
