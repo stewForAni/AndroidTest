@@ -47,11 +47,13 @@ import com.stew.androidtest.testforwindow.TestWindowActivity;
 
 import com.stew.androidtest.testforhotfix.TestCLassLoaderForHotfixActivity;
 import com.stew.androidtest.testforwxexit.TestWxAcExitActivity;
+import com.stew.androidtest.util.AppLogUtil;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.OutputStream;
 
 
@@ -71,81 +73,55 @@ public class MainActivity extends AppCompatActivity {
         Log.d(TAG, "onCreate: ");
         setContentView(R.layout.activity_main);
 
-        findViewById(R.id.tx_activity).setOnClickListener((v) ->
-                startActivity(new Intent(MainActivity.this, Test1Activity.class)));
+        findViewById(R.id.tx_activity).setOnClickListener((v) -> startActivity(new Intent(MainActivity.this, Test1Activity.class)));
 
-        findViewById(R.id.tx).setOnClickListener((v) ->
-                startActivity(new Intent(MainActivity.this, HookActivity.class)));
+        findViewById(R.id.tx).setOnClickListener((v) -> startActivity(new Intent(MainActivity.this, HookActivity.class)));
 
-        findViewById(R.id.tx_dispatch).setOnClickListener((v) ->
-                startActivity(new Intent(MainActivity.this, TestDispatchActivity.class)));
+        findViewById(R.id.tx_dispatch).setOnClickListener((v) -> startActivity(new Intent(MainActivity.this, TestDispatchActivity.class)));
 
-        findViewById(R.id.tx_serial).setOnClickListener((v) ->
-                startActivity(new Intent(MainActivity.this, TestSerializeActivity.class)));
+        findViewById(R.id.tx_serial).setOnClickListener((v) -> startActivity(new Intent(MainActivity.this, TestSerializeActivity.class)));
 
-        findViewById(R.id.tx_parcel).setOnClickListener((v) ->
-                startActivity(new Intent(MainActivity.this, TestParcelableActivity.class)));
+        findViewById(R.id.tx_parcel).setOnClickListener((v) -> startActivity(new Intent(MainActivity.this, TestParcelableActivity.class)));
 
-        findViewById(R.id.tx_binder).setOnClickListener((v) ->
-                startActivity(new Intent(MainActivity.this, TestBinderActivity.class)));
+        findViewById(R.id.tx_binder).setOnClickListener((v) -> startActivity(new Intent(MainActivity.this, TestBinderActivity.class)));
 
-        findViewById(R.id.tx_aidl).setOnClickListener((v) ->
-                startActivity(new Intent(MainActivity.this, TestAIDLActivity.class)));
+        findViewById(R.id.tx_aidl).setOnClickListener((v) -> startActivity(new Intent(MainActivity.this, TestAIDLActivity.class)));
 
-        findViewById(R.id.tx_provider).setOnClickListener((v) ->
-                startActivity(new Intent(MainActivity.this, TestProvActivity.class)));
+        findViewById(R.id.tx_provider).setOnClickListener((v) -> startActivity(new Intent(MainActivity.this, TestProvActivity.class)));
 
-        findViewById(R.id.tx_scroll).setOnClickListener((v) ->
-                startActivity(new Intent(MainActivity.this, TestViewScrollActivity.class)));
+        findViewById(R.id.tx_scroll).setOnClickListener((v) -> startActivity(new Intent(MainActivity.this, TestViewScrollActivity.class)));
 
-        findViewById(R.id.tx_listView).setOnClickListener((v) ->
-                startActivity(new Intent(MainActivity.this, TestListViewActivity.class)));
+        findViewById(R.id.tx_listView).setOnClickListener((v) -> startActivity(new Intent(MainActivity.this, TestListViewActivity.class)));
 
-        findViewById(R.id.tx_scrollView).setOnClickListener((v) ->
-                startActivity(new Intent(MainActivity.this, TestListView2Activity.class)));
+        findViewById(R.id.tx_scrollView).setOnClickListener((v) -> startActivity(new Intent(MainActivity.this, TestListView2Activity.class)));
 
-        findViewById(R.id.tx_measure).setOnClickListener((v) ->
-                startActivity(new Intent(MainActivity.this, TestViewMeasureActivity.class)));
+        findViewById(R.id.tx_measure).setOnClickListener((v) -> startActivity(new Intent(MainActivity.this, TestViewMeasureActivity.class)));
 
-        findViewById(R.id.tx_cv).setOnClickListener((v) ->
-                startActivity(new Intent(MainActivity.this, TestCustomViewActivity.class)));
+        findViewById(R.id.tx_cv).setOnClickListener((v) -> startActivity(new Intent(MainActivity.this, TestCustomViewActivity.class)));
 
-        findViewById(R.id.tx_notify).setOnClickListener((v) ->
-                startActivity(new Intent(MainActivity.this, TestNotifyActivity.class)));
+        findViewById(R.id.tx_notify).setOnClickListener((v) -> startActivity(new Intent(MainActivity.this, TestNotifyActivity.class)));
 
-        findViewById(R.id.tx_widget).setOnClickListener((v) ->
-                startActivity(new Intent(MainActivity.this, TestAppWidgetActivity.class)));
+        findViewById(R.id.tx_widget).setOnClickListener((v) -> startActivity(new Intent(MainActivity.this, TestAppWidgetActivity.class)));
 
-        findViewById(R.id.tx_window).setOnClickListener((v) ->
-                startActivity(new Intent(MainActivity.this, TestWindowActivity.class)));
+        findViewById(R.id.tx_window).setOnClickListener((v) -> startActivity(new Intent(MainActivity.this, TestWindowActivity.class)));
 
-        findViewById(R.id.tx_Rxjava).setOnClickListener((v) ->
-                startActivity(new Intent(MainActivity.this, TestRxjavaActivity.class)));
+        findViewById(R.id.tx_Rxjava).setOnClickListener((v) -> startActivity(new Intent(MainActivity.this, TestRxjavaActivity.class)));
 
-        findViewById(R.id.tx_hotfix).setOnClickListener((v) ->
-                startActivity(new Intent(MainActivity.this, TestCLassLoaderForHotfixActivity.class)));
+        findViewById(R.id.tx_hotfix).setOnClickListener((v) -> startActivity(new Intent(MainActivity.this, TestCLassLoaderForHotfixActivity.class)));
 
-        findViewById(R.id.tx_okio).setOnClickListener((v) ->
-                startActivity(new Intent(MainActivity.this, TestOkioActivity.class)));
+        findViewById(R.id.tx_okio).setOnClickListener((v) -> startActivity(new Intent(MainActivity.this, TestOkioActivity.class)));
 
-        findViewById(R.id.tx_d2).setOnClickListener((v) ->
-                startActivity(new Intent(MainActivity.this, TestDagger2Activity.class)));
+        findViewById(R.id.tx_d2).setOnClickListener((v) -> startActivity(new Intent(MainActivity.this, TestDagger2Activity.class)));
 
-        findViewById(R.id.tx_hilt).setOnClickListener((v) ->
-                startActivity(new Intent(MainActivity.this, TestHiltActivity.class)));
+        findViewById(R.id.tx_hilt).setOnClickListener((v) -> startActivity(new Intent(MainActivity.this, TestHiltActivity.class)));
 
-        findViewById(R.id.tx_nested).setOnClickListener((v) ->
-                startActivity(new Intent(MainActivity.this, TestNestedScrollActivity.class)));
+        findViewById(R.id.tx_nested).setOnClickListener((v) -> startActivity(new Intent(MainActivity.this, TestNestedScrollActivity.class)));
 
-        findViewById(R.id.tx_storage).setOnClickListener((v) ->
-                startActivity(new Intent(MainActivity.this, TestStorageActivity.class)));
+        findViewById(R.id.tx_storage).setOnClickListener((v) -> startActivity(new Intent(MainActivity.this, TestStorageActivity.class)));
 
-        findViewById(R.id.tx_wx_exit).setOnClickListener((v) ->
-                startActivity(new Intent(MainActivity.this, TestWxAcExitActivity.class)));
+        findViewById(R.id.tx_wx_exit).setOnClickListener((v) -> startActivity(new Intent(MainActivity.this, TestWxAcExitActivity.class)));
 
-        findViewById(R.id.tx_asm).setOnClickListener((v) ->
-                startActivity(new Intent(MainActivity.this, TestAsmActivity.class)));
-
+        findViewById(R.id.tx_asm).setOnClickListener((v) -> startActivity(new Intent(MainActivity.this, TestAsmActivity.class)));
 
 
 //        //内
@@ -197,7 +173,7 @@ public class MainActivity extends AppCompatActivity {
 //            }
 //        }).start();
 
+        AppLogUtil.addLifeLog("########" + getClass().getName());
 
     }
-
 }

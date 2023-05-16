@@ -7,6 +7,7 @@ import android.util.Log;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.stew.androidtest.R;
+import com.stew.androidtest.util.AppLogUtil;
 
 public class Test1Activity extends AppCompatActivity {
 

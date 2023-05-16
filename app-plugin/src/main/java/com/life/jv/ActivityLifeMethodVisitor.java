@@ -21,6 +21,9 @@ public class ActivityLifeMethodVisitor extends MethodVisitor {
    @Override
    public void visitCode() {
       super.visitCode();
-
+      mv.visitVarInsn(Opcodes.ALOAD,0);
+      mv.visitMethodInsn(Opcodes.INVOKEVIRTUAL, "java/lang/Object", "getClass", "()Ljava/lang/Class;", false);
+      mv.visitMethodInsn(Opcodes.INVOKEVIRTUAL, "java/lang/Class", "getName", "()Ljava/lang/String;", false);
+      mv.visitMethodInsn(Opcodes.INVOKESTATIC, "com/stew/androidtest/util/AppLogUtil", "addLifeLog", "(Ljava/lang/String;)V", false);
    }
 }

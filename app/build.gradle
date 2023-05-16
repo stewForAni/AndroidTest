@@ -1,6 +1,6 @@
 apply plugin: 'com.android.application'
 //apply plugin: 'dagger.hilt.android.plugin'
-//apply plugin: 'activitylife'
+apply plugin: 'lifeplugin'
 
 android {
     compileSdkVersion 31
@@ -12,6 +12,7 @@ android {
         targetSdkVersion 31
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
     }
 
     buildTypes {

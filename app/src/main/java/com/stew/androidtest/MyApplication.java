@@ -5,6 +5,7 @@ import android.content.Context;
 import android.os.Build;
 import android.util.Log;
 
+import com.stew.androidtest.util.AppLogUtil;
 import com.stew.androidtest.util.CommonUtil;
 
 //import dagger.hilt.android.HiltAndroidApp;
@@ -28,6 +29,7 @@ public class MyApplication extends Application {
         Log.d("MyApplication", "onCreate: ");
         instance = this;
         CommonUtil.init(instance);
+        AppLogUtil.init(instance);
     }
 
 
