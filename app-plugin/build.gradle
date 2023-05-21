@@ -1,5 +1,37 @@
-apply plugin: 'groovy'
-apply plugin: 'maven'
+//apply plugin: 'groovy'
+//apply plugin: 'maven'
+//
+//dependencies {
+//    implementation fileTree(dir: 'libs', include: ['*.jar'])
+//
+//    implementation gradleApi()
+//    implementation localGroovy()
+//
+//    implementation 'com.android.tools.build:gradle:4.2.2'
+//
+//    //ASM相关依赖
+//    implementation 'org.ow2.asm:asm:7.1'
+//    implementation 'org.ow2.asm:asm-commons:7.1'
+//}
+//
+//group='appplugin'
+//version='1.0.0'
+//
+//uploadArchives {
+//    repositories {
+//        mavenDeployer {
+//            //本地的Maven地址设置
+//            repository(url: uri('../apppluginrepo'))
+//        }
+//    }
+//}
+
+
+plugins {
+    id 'groovy'
+    id 'maven-publish'
+}
+
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -14,14 +46,33 @@ dependencies {
     implementation 'org.ow2.asm:asm-commons:7.1'
 }
 
-group='appplugin'
-version='1.0.0'
+publishing {
+    publications {
+        //配置POM
+        maven(MavenPublication) {
+            groupId = 'com.stew.appplugin'
+            artifactId = 'life'
+            version = '1.0.0'
 
-uploadArchives {
-    repositories {
-        mavenDeployer {
-            //本地的Maven地址设置
-            repository(url: uri('../apppluginrepo'))
+            from components.java
         }
+    }
+
+    repositories {
+        //发布到本地e盘
+        maven {
+            url = "../apppluginrepo"
+        }
+
+        //发布到远程
+//        maven {
+//            name = "remote"
+//            url = "your remote url"
+//            credentials {
+//                username = "your username"
+//                password = "your password"
+//            }
+//        }
+
     }
 }
