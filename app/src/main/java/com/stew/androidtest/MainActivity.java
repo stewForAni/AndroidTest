@@ -48,6 +48,7 @@ import com.stew.androidtest.testforwindow.TestWindowActivity;
 import com.stew.androidtest.testforhotfix.TestCLassLoaderForHotfixActivity;
 import com.stew.androidtest.testforwxexit.TestWxAcExitActivity;
 import com.stew.androidtest.util.AppLogUtil;
+import com.stew.mylibrary.Lib2Activity;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -73,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
         Log.d(TAG, "onCreate: ");
         setContentView(R.layout.activity_main);
 
-        findViewById(R.id.tx_activity).setOnClickListener((v) -> startActivity(new Intent(MainActivity.this, Test1Activity.class)));
+        findViewById(R.id.tx_activity).setOnClickListener((v) -> startActivity(new Intent(MainActivity.this, Lib2Activity.class)));
 
         findViewById(R.id.tx).setOnClickListener((v) -> startActivity(new Intent(MainActivity.this, HookActivity.class)));
 

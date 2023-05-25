@@ -1,3 +1,4 @@
+//---------------Old Local Version--------------------
 //apply plugin: 'groovy'
 //apply plugin: 'maven'
 //
@@ -27,52 +28,30 @@
 //}
 
 
+//---------------New Local Version--------------------
 plugins {
     id 'groovy'
     id 'maven-publish'
 }
-
-
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-
     implementation gradleApi()
     implementation localGroovy()
-
     implementation 'com.android.tools.build:gradle:4.2.2'
-
-    //ASM相关依赖
     implementation 'org.ow2.asm:asm:7.1'
     implementation 'org.ow2.asm:asm-commons:7.1'
 }
-
 publishing {
     publications {
-        //配置POM
         maven(MavenPublication) {
             groupId = 'com.stew.appplugin'
-            artifactId = 'life'
+            artifactId = 'lifeplugin'
             version = '1.0.0'
-
             from components.java
         }
     }
-
     repositories {
-        //发布到本地e盘
-        maven {
-            url = "../apppluginrepo"
-        }
-
-        //发布到远程
-//        maven {
-//            name = "remote"
-//            url = "your remote url"
-//            credentials {
-//                username = "your username"
-//                password = "your password"
-//            }
-//        }
-
+        maven {url = "../apppluginrepo"}
     }
 }
+//---------------Remote Version--------------------

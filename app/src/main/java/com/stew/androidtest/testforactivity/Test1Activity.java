@@ -17,7 +17,9 @@ public class Test1Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test1);
-        findViewById(R.id.tx1).setOnClickListener(v -> startActivity(new Intent(Test1Activity.this, Test2Activity.class)));
+        findViewById(R.id.tx1).setOnClickListener(v ->
+                startActivity(new Intent(Test1Activity.this, Test2Activity.class))
+        );
     }
 
     @Override

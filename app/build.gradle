@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 //apply plugin: 'dagger.hilt.android.plugin'
 apply plugin: 'lifeplugin'
 
+
 android {
     compileSdkVersion 31
     buildToolsVersion '31.0.0'
@@ -28,6 +29,7 @@ android {
     }
 }
 
+
 dependencies {
 
     implementation 'androidx.appcompat:appcompat:1.4.1'
@@ -38,6 +40,8 @@ dependencies {
     implementation 'io.reactivex.rxjava2:rxjava:2.2.21'
     implementation 'com.squareup.okhttp3:okhttp:3.9.0'
 
+
+    implementation project(path: ':mylibrary')
 
     //dagger
 //    implementation 'com.google.dagger:dagger:2.35.1'
