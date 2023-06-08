@@ -1,27 +1,12 @@
 package com.stew.androidtest;
 
-import android.app.Instrumentation;
-import android.content.ContentValues;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.media.MediaFormat;
-import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
-import android.os.Environment;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.provider.MediaStore;
 import android.util.Log;
-import android.view.View;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.stew.androidtest.testforactivity.Test1Activity;
 import com.stew.androidtest.testforaidl.TestAIDLActivity;
 import com.stew.androidtest.testforasm.TestAsmActivity;
 import com.stew.androidtest.testforbinder.TestBinderActivity;
@@ -47,15 +32,7 @@ import com.stew.androidtest.testforwindow.TestWindowActivity;
 
 import com.stew.androidtest.testforhotfix.TestCLassLoaderForHotfixActivity;
 import com.stew.androidtest.testforwxexit.TestWxAcExitActivity;
-import com.stew.androidtest.util.AppLogUtil;
 import com.stew.mylibrary.Lib2Activity;
-
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -173,8 +150,6 @@ public class MainActivity extends AppCompatActivity {
 //                e.printStackTrace();
 //            }
 //        }).start();
-
-        AppLogUtil.addLifeLog("########" + getClass().getName());
 
     }
 }

@@ -2,8 +2,7 @@ plugins {
     id 'com.android.library'
 }
 
-apply plugin: 'lifeplugin'
-
+//apply plugin: 'lifemonitor'
 android {
     namespace 'com.stew.mylibrary'
     compileSdkVersion 33

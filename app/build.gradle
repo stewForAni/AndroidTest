@@ -1,7 +1,6 @@
 apply plugin: 'com.android.application'
 //apply plugin: 'dagger.hilt.android.plugin'
-apply plugin: 'lifeplugin'
-
+//apply plugin: 'MethodTimePlugin'
 
 android {
     compileSdkVersion 31
@@ -17,8 +16,14 @@ android {
     }
 
     buildTypes {
+        debug {
+            minifyEnabled false
+            shrinkResources false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
         release {
             minifyEnabled false
+            shrinkResources false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }

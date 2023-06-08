@@ -1,4 +1,4 @@
 include ':app'
 rootProject.name = "AndroidTest"
-include ':app-plugin'
 include ':mylibrary'
+include ':myplugin'

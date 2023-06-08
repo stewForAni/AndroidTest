@@ -1,8 +1,6 @@
 package com.stew.androidtest;
 
 import android.app.Application;
-import android.content.Context;
-import android.os.Build;
 import android.util.Log;
 
 import com.stew.androidtest.util.AppLogUtil;

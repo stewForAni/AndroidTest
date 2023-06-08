@@ -1,4 +1,4 @@
-package com.life.gy
+package com.stew.gy
 
 import com.android.build.api.transform.Format
 import com.android.build.api.transform.QualifiedContent
@@ -8,13 +8,13 @@ import com.android.build.api.transform.TransformInput
 import com.android.build.api.transform.TransformInvocation
 import com.android.build.api.transform.TransformOutputProvider
 import com.android.build.gradle.internal.pipeline.TransformManager
-import com.life.jv.ActivityLifeClassVisitor
+import com.stew.jv.ActivityLifeClassVisitor
 import org.apache.commons.io.FileUtils
 import org.objectweb.asm.ClassReader
 import org.objectweb.asm.ClassVisitor
 import org.objectweb.asm.ClassWriter
 
-public class LifeTransform extends Transform {
+class MethodTimeTransform extends Transform {
     @Override
     String getName() {
         return "LifeTransform"
@@ -51,7 +51,6 @@ public class LifeTransform extends Transform {
             //这里对jar的处理，是因为gradle 3.6.0以上R类不会转为.class文件而会转成jar，因此在Transform实现中需要单独拷贝
             it.jarInputs.each {
                 File file = it.file
-                System.out.println("find jar input: " + file.name)
                 def dest = outputProvider.getContentLocation(it.name, it.contentTypes, it.scopes, Format.JAR)
                 FileUtils.copyFile(file, dest)
             }
@@ -61,8 +60,8 @@ public class LifeTransform extends Transform {
                 File dir = it.file
                 if (dir.isDirectory()) {
                     dir.eachFileRecurse {
-                        if(it.name.endsWith(".class")){
-                            System.in.println(it.name)
+                        if (it.name.endsWith("Activity.class") && !it.name.contains('Base')) {
+                            println("file = " + it.name)
                             //对class文件进行读取与解析
                             ClassReader classReader = new ClassReader(it.bytes)
                             //对class文件的写入

@@ -34,27 +34,18 @@ public class AppLogUtil {
     public static void addLifeLog(String data) {
         runOnWorkerThread(() -> {
             try {
-                Log.d("addLifeLog", "addLifeLog: 1");
-
                 String path = mContext.getExternalFilesDir(null).toString() + "/logs/";
-
                 if (logFile == null) {
                     logFile = new File(path, "lifelog.txt");
                 }
-
                 if (!logFile.exists()) {
-                    Log.d("addLifeLog", "addLifeLog: 2");
                     File dir = new File(path);
                     if (dir.mkdirs()) {
                         if (logFile.createNewFile()) {
-                            Log.d("addLifeLog", "addLifeLog: 3");
+                            Log.d("addLifeLog", "logFile created");
                         }
                     }
                 }
-
-                Log.d("addLifeLog", "addLifeLog: 4");
-
-
                 sink = Okio.appendingSink(logFile);
                 bufferedSink = Okio.buffer(sink);
                 bufferedSink.writeUtf8(String.valueOf(System.currentTimeMillis()));

@@ -32,6 +32,7 @@
 plugins {
     id 'groovy'
     id 'maven-publish'
+    id 'java-gradle-plugin'
 }
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -41,11 +42,19 @@ dependencies {
     implementation 'org.ow2.asm:asm:7.1'
     implementation 'org.ow2.asm:asm-commons:7.1'
 }
+gradlePlugin {
+    plugins {
+        greeting {
+            id = 'MethodTimePlugin'
+            implementationClass = 'com.stew.gy.MethodTimePlugin'
+        }
+    }
+}
 publishing {
     publications {
         maven(MavenPublication) {
             groupId = 'com.stew.appplugin'
-            artifactId = 'lifeplugin'
+            artifactId = 'methodtime'
             version = '1.0.0'
             from components.java
         }
@@ -54,4 +63,6 @@ publishing {
         maven {url = "../apppluginrepo"}
     }
 }
+
 //---------------Remote Version--------------------
+//see LifeMonitor project
