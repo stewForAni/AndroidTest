@@ -35,16 +35,17 @@ plugins {
     id 'java-gradle-plugin'
 }
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation gradleApi()
-    implementation localGroovy()
+//    implementation fileTree(dir: 'libs', include: ['*.jar'])
+//    implementation gradleApi()
+//    implementation localGroovy()
+
     implementation 'com.android.tools.build:gradle:4.2.2'
     implementation 'org.ow2.asm:asm:7.1'
     implementation 'org.ow2.asm:asm-commons:7.1'
 }
 gradlePlugin {
     plugins {
-        greeting {
+        MethodTimePlugin {
             id = 'MethodTimePlugin'
             implementationClass = 'com.stew.gy.MethodTimePlugin'
         }
