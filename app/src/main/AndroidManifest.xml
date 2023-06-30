@@ -68,11 +68,9 @@
             android:name=".testforbinder.TestBinderActivity"
             android:screenOrientation="portrait" />
 
-
         <activity
             android:name=".testforaidl.TestAIDLActivity"
             android:screenOrientation="portrait" />
-
 
         <activity
             android:name=".testforcontentprovider.TestProvActivity"
@@ -88,6 +86,10 @@
 
         <activity
             android:name=".testforlistview.TestListView2Activity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".testforview.TestViewActivity"
             android:screenOrientation="portrait" />
 
         <activity
@@ -131,6 +133,7 @@
 
         <activity android:name=".testforasm.TestAsmActivity"/>
 
+        <activity android:name=".testforrv.TestRVActivity"/>
 
         <!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////// -->
         <!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////// -->

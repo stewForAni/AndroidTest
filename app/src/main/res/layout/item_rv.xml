@@ -4,6 +4,7 @@
     android:layout_height="wrap_content">
 
     <TextView
+        android:background="#ccc"
         android:id="@+id/tx_rv"
         android:gravity="center"
         android:layout_width="match_parent"

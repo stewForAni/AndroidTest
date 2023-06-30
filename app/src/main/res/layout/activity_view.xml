@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.stew.androidtest.testforview.Re1
+        android:id="@+id/re1"
+        android:background="#ccc"
+        android:layout_width="match_parent"
+        android:layout_height="100dp">
+        <com.stew.androidtest.testforview.V1
+            android:background="#999"
+            android:id="@+id/v1"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            />
+        <com.stew.androidtest.testforview.V3
+            android:layout_marginLeft="100dp"
+            android:id="@+id/v3"
+            android:background="#000"
+            android:layout_width="50dp"
+            android:layout_height="50dp"/>
+
+    </com.stew.androidtest.testforview.Re1>
+
+    <com.stew.androidtest.testforview.Re2
+        android:background="#999"
+        android:layout_width="match_parent"
+        android:layout_height="100dp">
+        <com.stew.androidtest.testforview.V2
+            android:background="#666"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            />
+    </com.stew.androidtest.testforview.Re2>
+
+    <Button
+        android:text="RequestLayout"
+        android:id="@+id/btn1"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"/>
+
+    <Button
+        android:text="invalidate"
+        android:id="@+id/btn2"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"/>
+
+</LinearLayout>

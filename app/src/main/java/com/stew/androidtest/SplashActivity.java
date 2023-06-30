@@ -19,11 +19,11 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+//        try {
+//            Thread.sleep(3000);
+//        } catch (InterruptedException e) {
+//            throw new RuntimeException(e);
+//        }
 
         startActivity(new Intent(this, MainActivity.class));
         finish();
@@ -45,6 +45,7 @@ public class SplashActivity extends AppCompatActivity {
 
         long a = System.currentTimeMillis();
         Log.d("TAG", "aaa" + a);
+
     }
 
 }

@@ -21,10 +21,12 @@ import com.stew.androidtest.testfornestedscroll.TestNestedScrollActivity;
 import com.stew.androidtest.testforokio.TestOkioActivity;
 import com.stew.androidtest.testforremoteview.TestAppWidgetActivity;
 import com.stew.androidtest.testforremoteview.TestNotifyActivity;
+import com.stew.androidtest.testforrv.TestRVActivity;
 import com.stew.androidtest.testforrxjava.TestRxjavaActivity;
 import com.stew.androidtest.testforserialize.TestParcelableActivity;
 import com.stew.androidtest.testforserialize.TestSerializeActivity;
 import com.stew.androidtest.testforstorage.TestStorageActivity;
+import com.stew.androidtest.testforview.TestViewActivity;
 import com.stew.androidtest.testforviewmeasure.TestCustomViewActivity;
 import com.stew.androidtest.testforviewmeasure.TestViewMeasureActivity;
 import com.stew.androidtest.testforviewscroll.TestViewScrollActivity;
@@ -39,6 +41,21 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
     private AlertDialog alertDialog;
+
+//    @Override
+//    protected void onResume() {
+//        super.onResume();
+//        findViewById(R.id.tx_activity).post(new Runnable() {
+//            @Override
+//            public void run() {
+//                try {
+//                    Thread.sleep(60000);
+//                } catch (InterruptedException e) {
+//                    throw new RuntimeException(e);
+//                }
+//            }
+//        });
+//    }
 
     @Override
     protected void onPause() {
@@ -101,6 +118,9 @@ public class MainActivity extends AppCompatActivity {
 
         findViewById(R.id.tx_asm).setOnClickListener((v) -> startActivity(new Intent(MainActivity.this, TestAsmActivity.class)));
 
+        findViewById(R.id.tx_view).setOnClickListener((v) -> startActivity(new Intent(MainActivity.this, TestViewActivity.class)));
+
+        findViewById(R.id.tx_rv).setOnClickListener((v) -> startActivity(new Intent(MainActivity.this, TestRVActivity.class)));
 
 //        //内
 //        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
