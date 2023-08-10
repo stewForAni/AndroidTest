@@ -2,6 +2,7 @@ package com.stew.androidtest.testforhook;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,6 +30,8 @@ public class HookActivity extends BaseActivity {
         HookClickManager.hook(tx);
 
         reportFullyDrawn();
+
+        //Log.d("TAG-1", "onCreate: "+this);
     }
 
 

@@ -19,31 +19,36 @@ import java.util.List;
  * mail: stewforani@gmail.com
  */
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyVH> {
-    List<Integer> data;
+    List<InstallEntity> data;
     Context context;
+    ItemClickListener listener;
 
     public MyAdapter(Context context) {
         this.context = context;
     }
 
-    public void setData(List<Integer> list) {
+    public void setData(List<InstallEntity> list) {
         this.data = list;
+    }
+
+    public void setListener(ItemClickListener listener) {
+        this.listener = listener;
     }
 
     @NonNull
     @Override
     public MyVH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_rv, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.item_rv1, parent, false);
         MyVH vh = new MyVH(view);
-        view.setOnClickListener(view1 -> {
-            Log.d("MyAdapter", "onclick: "+vh.getLayoutPosition());
+        vh.tv.setOnClickListener(view1 -> {
+            listener.ItemClick(vh.getLayoutPosition());
         });
         return vh;
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyVH holder, int position) {
-        holder.tv.setText(data.get(position).toString());
+        holder.tv.setText(data.get(position).progress);
     }
 
     @Override
@@ -60,8 +65,4 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyVH> {
         }
     }
 
-//    @Override
-//    public void onClick(View view) {
-//
-//    }
 }

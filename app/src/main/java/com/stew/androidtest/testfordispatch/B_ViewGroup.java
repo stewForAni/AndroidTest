@@ -43,7 +43,7 @@ public class B_ViewGroup extends LinearLayout {
         //Log.d("B_ViewGroup", "dispatchTouchEvent: " + a);
 
         //mFirstTouchTarget
-        //getPri();
+        getPri();
 
         return a;
     }

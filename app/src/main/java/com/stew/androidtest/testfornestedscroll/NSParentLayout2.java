@@ -47,8 +47,11 @@ public class NSParentLayout2 extends LinearLayout implements NestedScrollingPare
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         Log.d(TAG, "onMeasure: ");
+
         params.height = getMeasuredHeight();
         bottomView.setLayoutParams(params);
+        //上述两部必须设置，使RV高度=屏幕高度
+
         topViewHeight = topView.getMeasuredHeight();
     }
 
@@ -79,9 +82,10 @@ public class NSParentLayout2 extends LinearLayout implements NestedScrollingPare
     @Override
     public void onNestedPreScroll(@NonNull View target, int dx, int dy, @NonNull int[] consumed, int type) {
         Log.d(TAG, "onNestedPreScroll: getScrollY = " + getScrollY() + " dy" + dy + " type=" + type);
-        boolean FLAG_TOP_ON = dy > 0 && getScrollY() < topViewHeight;
-        boolean FLAG_TOP_OFF = dy < 0 && getScrollY() > 0 && !target.canScrollVertically(-1);
-        if (FLAG_TOP_ON || FLAG_TOP_OFF) {
+        boolean PARENT_DOWN = dy > 0 && getScrollY() < topViewHeight;
+        //canScrollVertically(-1)负值检查向上滚动，正向检查向下滚动
+        boolean PARENT_UP = dy < 0 && getScrollY() > 0 && !target.canScrollVertically(-1);
+        if (PARENT_DOWN || PARENT_UP) {
             scrollBy(0, dy);
             consumed[1] = dy;
         }

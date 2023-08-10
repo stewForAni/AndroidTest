@@ -2,6 +2,7 @@ package com.stew.androidtest.testforhook;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -19,6 +20,7 @@ class BaseActivity extends AppCompatActivity {
    protected void onCreate(@Nullable Bundle savedInstanceState) {
       super.onCreate(savedInstanceState);
       HookActivityManager.hook(this);
+      //Log.d("TAG-2", "onCreate: "+this);
    }
 
 }

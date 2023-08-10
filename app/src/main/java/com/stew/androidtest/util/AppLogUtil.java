@@ -21,6 +21,8 @@ public class AppLogUtil {
     private static File logFile;
     private static Sink sink;
     private static BufferedSink bufferedSink;
+
+    //HandlerThread也可以满足异步+串行
     private static final ExecutorService logThread = Executors.newFixedThreadPool(1);
 
     public static void runOnWorkerThread(Runnable runnable) {

@@ -4,15 +4,21 @@
     android:layout_height="match_parent">
 
     <com.stew.androidtest.testfornestedscroll.NSParentLayout2
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <com.stew.androidtest.testfornestedscroll.MyImg
-            android:id="@+id/top_view"
+        <com.stew.androidtest.testfornestedscroll.NSPChildLayout2
             android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:background="@color/purple_200" />
+            android:layout_height="300dp">
+
+            <com.stew.androidtest.testfornestedscroll.MyImg
+                android:id="@+id/top_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/teal_700" />
+
+        </com.stew.androidtest.testfornestedscroll.NSPChildLayout2>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/bottom_view"

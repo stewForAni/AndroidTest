@@ -23,9 +23,9 @@ public class TestDispatchActivity extends AppCompatActivity {
         Log.d(TAG, "onCreate: ");
         setContentView(R.layout.activity_test_dispatch);
 
-//        findViewById(R.id.cview).setOnClickListener(v -> {
-//            Log.d(TAG, "----------------- cview click -----------------");
-//        });
+        findViewById(R.id.cview).setOnClickListener(v -> {
+            Log.d(TAG, "----------------- cview click -----------------");
+        });
     }
 
     @Override
