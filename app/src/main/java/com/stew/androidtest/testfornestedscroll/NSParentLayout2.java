@@ -52,7 +52,7 @@ public class NSParentLayout2 extends LinearLayout implements NestedScrollingPare
         bottomView.setLayoutParams(params);
         //上述两部必须设置，使RV高度=屏幕高度
 
-        topViewHeight = topView.getMeasuredHeight();
+        topViewHeight = topView.getMeasuredHeight()-300;
     }
 
     @Override
