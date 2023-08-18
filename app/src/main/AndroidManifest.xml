@@ -125,6 +125,8 @@
 
         <activity android:name=".testfornestedscroll.TestNestedScrollActivity" />
 
+        <activity android:name=".testfornestedscroll2.BarActivity"/>
+
         <activity android:name=".testforstorage.TestStorageActivity"/>
 
         <activity android:name=".testforwxexit.TestWxAcExitActivity"

@@ -52,7 +52,7 @@ public class NSParentLayout2 extends LinearLayout implements NestedScrollingPare
         bottomView.setLayoutParams(params);
         //上述两部必须设置，使RV高度=屏幕高度
 
-        topViewHeight = topView.getMeasuredHeight()-300;
+        topViewHeight = topView.getMeasuredHeight();
     }
 
     @Override
@@ -82,10 +82,13 @@ public class NSParentLayout2 extends LinearLayout implements NestedScrollingPare
     @Override
     public void onNestedPreScroll(@NonNull View target, int dx, int dy, @NonNull int[] consumed, int type) {
         Log.d(TAG, "onNestedPreScroll: getScrollY = " + getScrollY() + " dy" + dy + " type=" + type);
-        boolean PARENT_DOWN = dy > 0 && getScrollY() < topViewHeight;
+
+        //dy代表方向，getScrollY代表总的距离原始位置的滑动距离
+        boolean TOPSHOW = dy > 0 && getScrollY() < topViewHeight;
+
         //canScrollVertically(-1)负值检查向上滚动，正向检查向下滚动
-        boolean PARENT_UP = dy < 0 && getScrollY() > 0 && !target.canScrollVertically(-1);
-        if (PARENT_DOWN || PARENT_UP) {
+        boolean TOPHIDE = dy < 0 && getScrollY() >= 0 && !target.canScrollVertically(-1);
+        if (TOPSHOW || TOPHIDE) {
             scrollBy(0, dy);
             consumed[1] = dy;
         }
@@ -93,11 +96,11 @@ public class NSParentLayout2 extends LinearLayout implements NestedScrollingPare
 
     @Override
     public void onNestedScroll(@NonNull View target, int dxConsumed, int dyConsumed, int dxUnconsumed, int dyUnconsumed, int type) {
-        Log.d(TAG, "onNestedScroll   dxConsumed: "
-                + dxConsumed + " dyConsumed:"
-                + dyConsumed + " dxUnconsumed:"
-                + dxUnconsumed + " dyUnconsumed:"
-                + dyUnconsumed + " type" + type);
+        Log.d(TAG, "onNestedScroll   target: " + target.getClass().getSimpleName() + " dxUnconsumed:" + dxUnconsumed + " dyUnconsumed:" + dyUnconsumed + " type" + type);
+        if (target == topView) {
+            bottomView.scrollBy(0, dyUnconsumed);
+        }
+
     }
 
     @Override

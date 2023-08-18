@@ -8,29 +8,11 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <com.stew.androidtest.testfornestedscroll.NSChildLayout2
-            android:clickable="true"
+        <com.stew.androidtest.testfornestedscroll.NSChildLayout3
             android:id="@+id/top_view"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:focusable="true">
-
-            <com.stew.androidtest.testfornestedscroll.MyImg
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:background="@color/teal_700" />
-
-            <com.stew.androidtest.testfornestedscroll.MyImg
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:background="@color/teal_200" />
-
-            <com.stew.androidtest.testfornestedscroll.MyImg
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:background="@color/teal_700" />
-
-        </com.stew.androidtest.testfornestedscroll.NSChildLayout2>
+            android:layout_height="600dp"
+            android:background="@color/teal_700" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/bottom_view"

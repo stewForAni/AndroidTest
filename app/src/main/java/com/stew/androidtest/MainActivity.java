@@ -18,6 +18,7 @@ import com.stew.androidtest.testfordispatch.TestDispatchActivity;
 import com.stew.androidtest.testforlistview.TestListView2Activity;
 import com.stew.androidtest.testforlistview.TestListViewActivity;
 import com.stew.androidtest.testfornestedscroll.TestNestedScrollActivity;
+import com.stew.androidtest.testfornestedscroll2.BarActivity;
 import com.stew.androidtest.testforokio.TestOkioActivity;
 import com.stew.androidtest.testforremoteview.TestAppWidgetActivity;
 import com.stew.androidtest.testforremoteview.TestNotifyActivity;
@@ -111,6 +112,8 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.tx_hilt).setOnClickListener((v) -> startActivity(new Intent(MainActivity.this, TestHiltActivity.class)));
 
         findViewById(R.id.tx_nested).setOnClickListener((v) -> startActivity(new Intent(MainActivity.this, TestNestedScrollActivity.class)));
+
+        findViewById(R.id.tx_nested2).setOnClickListener((v) -> startActivity(new Intent(MainActivity.this, BarActivity.class)));
 
         findViewById(R.id.tx_storage).setOnClickListener((v) -> startActivity(new Intent(MainActivity.this, TestStorageActivity.class)));
 
