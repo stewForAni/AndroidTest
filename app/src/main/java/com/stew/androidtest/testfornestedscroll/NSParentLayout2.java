@@ -96,7 +96,7 @@ public class NSParentLayout2 extends LinearLayout implements NestedScrollingPare
 
     @Override
     public void onNestedScroll(@NonNull View target, int dxConsumed, int dyConsumed, int dxUnconsumed, int dyUnconsumed, int type) {
-        Log.d(TAG, "onNestedScroll   target: " + target.getClass().getSimpleName() + " dxUnconsumed:" + dxUnconsumed + " dyUnconsumed:" + dyUnconsumed + " type" + type);
+        //Log.d(TAG, "onNestedScroll   target: " + target.getClass().getSimpleName() + " dxUnconsumed:" + dxUnconsumed + " dyUnconsumed:" + dyUnconsumed + " type" + type);
         if (target == topView) {
             bottomView.scrollBy(0, dyUnconsumed);
         }

@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.VelocityTracker;
 import android.view.ViewConfiguration;
+import android.view.ViewGroup;
 import android.view.animation.Interpolator;
 import android.widget.LinearLayout;
 import android.widget.OverScroller;
@@ -27,12 +28,13 @@ import androidx.recyclerview.widget.RecyclerView;
  * Created by stew on 2023/8/8.
  * mail: stewforani@gmail.com
  */
-public class NSChildLayout3 extends LinearLayout implements NestedScrollingChild2, NestedScrollingChild3 {
+public class NSChildLayout3 extends ViewGroup implements NestedScrollingChild2, NestedScrollingChild3 {
 
     private int lastX = -1;
     private int lastY = -1;
     private final int[] consumed = new int[2];
     private final int[] offset = new int[2];
+    private final int[] mNestedOffsets = new int[2];
 
     private int mScrollPointerId = INVALID_POINTER;
     private VelocityTracker vt;
@@ -49,13 +51,17 @@ public class NSChildLayout3 extends LinearLayout implements NestedScrollingChild
         super(context, attrs);
         //设置当前子View是否支持嵌套滑动，如果是false，父View无法响应嵌套滑动
         setNestedScrollingEnabled(true);
-        setOrientation(VERTICAL);
         ViewConfiguration vc = ViewConfiguration.get(context);
         mMinFlingVelocity = vc.getScaledMinimumFlingVelocity();//默认50
         mMaxFlingVelocity = vc.getScaledMaximumFlingVelocity();//默认8000
 
 
         flingTool = new FlingTool(context);
+    }
+
+    @Override
+    protected void onLayout(boolean changed, int l, int t, int r, int b) {
+
     }
 
 
@@ -68,9 +74,15 @@ public class NSChildLayout3 extends LinearLayout implements NestedScrollingChild
         }
 
         boolean eventAddedToVelocityTracker = false;
-        final MotionEvent vtev = MotionEvent.obtain(event);
+        final int action = event.getActionMasked();
 
-        switch (event.getAction()) {
+        if (action == MotionEvent.ACTION_DOWN) {
+            mNestedOffsets[0] = mNestedOffsets[1] = 0;
+        }
+        final MotionEvent vtev = MotionEvent.obtain(event);
+        vtev.offsetLocation(mNestedOffsets[0], mNestedOffsets[1]);
+
+        switch (action) {
             case MotionEvent.ACTION_DOWN:
                 mScrollPointerId = event.getPointerId(0);
                 lastX = (int) event.getRawX();
@@ -85,30 +97,26 @@ public class NSChildLayout3 extends LinearLayout implements NestedScrollingChild
                 if (dispatchNestedPreScroll(dx, dy, consumed, offset, TYPE_TOUCH)) {
                     dx -= consumed[0];
                     dy -= consumed[1];
+                    // Updated the nested offsets
+                    mNestedOffsets[0] += offset[0];
+                    mNestedOffsets[1] += offset[1];
                 }
                 dispatchNestedScroll(0, 0, dx, dy, null, TYPE_TOUCH);
                 lastX = currentX;
                 lastY = currentY;
                 break;
             case MotionEvent.ACTION_UP:
-            //case MotionEvent.ACTION_CANCEL:
-
                 vt.addMovement(vtev);
                 eventAddedToVelocityTracker = true;
-
                 vt.computeCurrentVelocity(1000, mMaxFlingVelocity);
-
-                int xvt = 0;
+                //int xvt = (int) -vt.getXVelocity(mScrollPointerId);
                 int yvt = (int) -vt.getYVelocity(mScrollPointerId);
-                fling(xvt, yvt);
+                fling(0, yvt);
+                reSetScroll();
 
-                //reset
-                lastX = -1;
-                lastY = -1;
-                if (vt != null) {
-                    vt.clear();
-                }
-                stopNestedScroll(TYPE_TOUCH);
+                break;
+            case MotionEvent.ACTION_CANCEL:
+                reSetScroll();
                 break;
         }
 
@@ -118,6 +126,15 @@ public class NSChildLayout3 extends LinearLayout implements NestedScrollingChild
         vtev.recycle();
 
         return true;
+    }
+
+    private void reSetScroll() {
+        lastX = -1;
+        lastY = -1;
+        if (vt != null) {
+            vt.clear();
+        }
+        stopNestedScroll(TYPE_TOUCH);
     }
 
     private void fling(int xvt, int yvt) {
@@ -133,8 +150,9 @@ public class NSChildLayout3 extends LinearLayout implements NestedScrollingChild
         }
 
         startNestedScroll(ViewCompat.SCROLL_AXIS_VERTICAL, ViewCompat.TYPE_NON_TOUCH);
+        xvt = Math.max(-mMaxFlingVelocity, Math.min(xvt, mMaxFlingVelocity));
         yvt = Math.max(-mMaxFlingVelocity, Math.min(yvt, mMaxFlingVelocity));
-        flingTool.fling(yvt);
+        flingTool.fling(xvt, yvt);
 
     }
 
@@ -153,27 +171,47 @@ public class NSChildLayout3 extends LinearLayout implements NestedScrollingChild
         OverScroller mOverScroller;
         Interpolator mInterpolator = sQuinticInterpolator;
 
+        // When set to true, postOnAnimation callbacks are delayed until the run method completes
+        private boolean mEatRunOnAnimationRequest = false;
+
+        // Tracks if postAnimationCallback should be re-attached when it is done
+        private boolean mReSchedulePostAnimationCallback = false;
+
+
         FlingTool(Context context) {
             mOverScroller = new OverScroller(context, sQuinticInterpolator);
         }
 
-        void fling(int yvt) {
+        void fling(int xvt, int yvt) {
             mLastFlingX = mLastFlingY = 0;
             if (mInterpolator != sQuinticInterpolator) {
                 mInterpolator = sQuinticInterpolator;
                 mOverScroller = new OverScroller(getContext(), sQuinticInterpolator);
             }
-            mOverScroller.fling(0, 0, 0, yvt, Integer.MIN_VALUE, Integer.MAX_VALUE, Integer.MIN_VALUE, Integer.MAX_VALUE);
-            post();
+            mOverScroller.fling(0, 0, xvt, yvt, Integer.MIN_VALUE, Integer.MAX_VALUE, Integer.MIN_VALUE, Integer.MAX_VALUE);
+            postOnAnimation();
         }
 
-        void post() {
+
+        void postOnAnimation() {
+            if (mEatRunOnAnimationRequest) {
+                mReSchedulePostAnimationCallback = true;
+            } else {
+                internalPostOnAnimation();
+            }
+        }
+
+        private void internalPostOnAnimation() {
             removeCallbacks(this);
             ViewCompat.postOnAnimation(NSChildLayout3.this, this);
         }
 
         @Override
         public void run() {
+
+            mReSchedulePostAnimationCallback = false;
+            mEatRunOnAnimationRequest = true;
+
             final OverScroller scroller = mOverScroller;
             if (scroller.computeScrollOffset()) {
                 final int x = scroller.getCurrX();
@@ -199,9 +237,17 @@ public class NSChildLayout3 extends LinearLayout implements NestedScrollingChild
                 dispatchNestedScroll(consumedX, consumedY, unconsumedX, unconsumedY, null,
                         TYPE_NON_TOUCH, mReusableIntPair);
 
-                post();
+                postOnAnimation();
 
             }
+
+            mEatRunOnAnimationRequest = false;
+            if (mReSchedulePostAnimationCallback) {
+                internalPostOnAnimation();
+            } else {
+                stopNestedScroll(TYPE_NON_TOUCH);
+            }
+
         }
     }
 
