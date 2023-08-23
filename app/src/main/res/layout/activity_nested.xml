@@ -12,8 +12,16 @@
         <com.stew.androidtest.testfornestedscroll.NSChildLayout3
             android:id="@+id/top_view"
             android:layout_width="match_parent"
-            android:layout_height="600dp"
-            android:background="@color/teal_700" />
+            android:layout_height="400dp"
+            android:background="@color/teal_700"
+            android:gravity="center">
+            <TextView
+                android:textSize="30sp"
+                android:textColor="@color/white"
+                android:text="TopView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </com.stew.androidtest.testfornestedscroll.NSChildLayout3>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/bottom_view"

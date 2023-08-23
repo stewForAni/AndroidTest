@@ -1,8 +1,12 @@
 package com.stew.androidtest;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Looper;
+import android.os.MessageQueue;
 import android.util.Log;
+import android.view.ViewTreeObserver;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -43,20 +47,11 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
     private AlertDialog alertDialog;
 
-//    @Override
-//    protected void onResume() {
-//        super.onResume();
-//        findViewById(R.id.tx_activity).post(new Runnable() {
-//            @Override
-//            public void run() {
-//                try {
-//                    Thread.sleep(60000);
-//                } catch (InterruptedException e) {
-//                    throw new RuntimeException(e);
-//                }
-//            }
-//        });
-//    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d(TAG, "onResume: ");
+    }
 
     @Override
     protected void onPause() {
@@ -173,6 +168,26 @@ public class MainActivity extends AppCompatActivity {
 //                e.printStackTrace();
 //            }
 //        }).start();
+
+        ViewTreeObserver observer = findViewById(R.id.tx_rv).getViewTreeObserver();
+        observer.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                Log.d(TAG, "onGlobalLayout: ");
+                findViewById(R.id.tx_rv).getViewTreeObserver().removeOnGlobalLayoutListener(this);
+            }
+        });
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            Looper.getMainLooper().getQueue().addIdleHandler(new MessageQueue.IdleHandler() {
+                @Override
+                public boolean queueIdle() {
+                    // UI第一帧绘制完成（可以理解为页面可见）
+                    Log.d(TAG, "queueIdle: "+Thread.currentThread().getName());
+                    return false;
+                }
+            });
+        }
 
     }
 }

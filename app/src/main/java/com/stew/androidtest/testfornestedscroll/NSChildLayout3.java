@@ -28,7 +28,7 @@ import androidx.recyclerview.widget.RecyclerView;
  * Created by stew on 2023/8/8.
  * mail: stewforani@gmail.com
  */
-public class NSChildLayout3 extends ViewGroup implements NestedScrollingChild2, NestedScrollingChild3 {
+public class NSChildLayout3 extends LinearLayout implements NestedScrollingChild2, NestedScrollingChild3 {
 
     private int lastX = -1;
     private int lastY = -1;
@@ -51,19 +51,12 @@ public class NSChildLayout3 extends ViewGroup implements NestedScrollingChild2, 
         super(context, attrs);
         //设置当前子View是否支持嵌套滑动，如果是false，父View无法响应嵌套滑动
         setNestedScrollingEnabled(true);
+        setOrientation(VERTICAL);
         ViewConfiguration vc = ViewConfiguration.get(context);
         mMinFlingVelocity = vc.getScaledMinimumFlingVelocity();//默认50
         mMaxFlingVelocity = vc.getScaledMaximumFlingVelocity();//默认8000
-
-
         flingTool = new FlingTool(context);
     }
-
-    @Override
-    protected void onLayout(boolean changed, int l, int t, int r, int b) {
-
-    }
-
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
