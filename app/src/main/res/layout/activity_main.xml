@@ -2,13 +2,14 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/black">
 
     <androidx.constraintlayout.helper.widget.Flow
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        app:constraint_referenced_ids="tx_activity,tx,tx_dispatch,tx_serial,tx_parcel,tx_binder,tx_aidl,tx_provider,tx_scroll,tx_listView,tx_scrollView,tx_view,tx_rv,tx_measure,tx_cv,tx_notify,tx_widget,tx_window,tx_Rxjava,tx_hotfix,tx_okio,tx_d2,tx_hilt,tx_nested,tx_nested2,tx_storage,tx_wx_exit,tx_asm,tx_shadow"
+        app:constraint_referenced_ids="tx_activity,tx,tx_dispatch,tx_serial,tx_parcel,tx_binder,tx_aidl,tx_provider,tx_scroll,tx_listView,tx_scrollView,tx_view,tx_rv,tx_measure,tx_cv,tx_notify,tx_widget,tx_window,tx_Rxjava,tx_hotfix,tx_okio,tx_d2,tx_hilt,tx_nested,tx_nested2,tx_storage,tx_wx_exit,tx_asm,tx_shadow,tx_ts"
         app:flow_horizontalGap="0dp"
         app:flow_verticalGap="20dp"
         app:flow_wrapMode="chain"
@@ -160,5 +161,10 @@
         android:id="@+id/tx_shadow"
         style="@style/main_text_style"
         android:text="Shadow Test" />
+
+    <TextView
+        android:id="@+id/tx_ts"
+        style="@style/main_text_style"
+        android:text="Transition Test" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

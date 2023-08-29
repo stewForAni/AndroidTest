@@ -5,12 +5,17 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Looper;
 import android.os.MessageQueue;
+import android.transition.Slide;
+import android.transition.Transition;
+import android.transition.TransitionInflater;
 import android.util.Log;
 import android.view.ViewTreeObserver;
+import android.view.Window;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.stew.androidtest.testForTransition.TransitionActivity;
 import com.stew.androidtest.testforaidl.TestAIDLActivity;
 import com.stew.androidtest.testforasm.TestAsmActivity;
 import com.stew.androidtest.testforbinder.TestBinderActivity;
@@ -120,6 +125,8 @@ public class MainActivity extends AppCompatActivity {
 
         findViewById(R.id.tx_rv).setOnClickListener((v) -> startActivity(new Intent(MainActivity.this, TestRVActivity.class)));
 
+        findViewById(R.id.tx_ts).setOnClickListener((v) -> startActivity(new Intent(MainActivity.this, TransitionActivity.class)));
+
 //        //内
 //        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
 //            Log.d("test file", "getDataDir: " + getDataDir());
@@ -188,6 +195,13 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
         }
+
+//        Transition slide = TransitionInflater.from(this).inflateTransition(R.transition.activity_slide);
+//        getWindow().setExitTransition(slide);
+
+        Slide slide = new Slide();
+        slide.setDuration(1000);
+        getWindow().setExitTransition(slide);
 
     }
 }
