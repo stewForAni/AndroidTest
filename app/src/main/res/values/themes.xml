@@ -12,9 +12,11 @@
 
         <item name="android:navigationBarColor">@color/white</item>
 
-
-        <item name="android:windowContentTransitions">true</item>
-
+        <!-- 允许使用transitions -->
+        <item name="android:windowActivityTransitions">true</item>
+        <!--是否覆盖执行，其实可以理解成是否同步执行还是顺序执行-->
+        <item name="android:windowAllowEnterTransitionOverlap">true</item>
+        <item name="android:windowAllowReturnTransitionOverlap">true</item>
     </style>
 
     <style name="WxExitTheme" parent="Theme.AndroidTest">

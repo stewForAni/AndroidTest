@@ -1,5 +1,6 @@
 package com.stew.androidtest;
 
+import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -125,7 +126,11 @@ public class MainActivity extends AppCompatActivity {
 
         findViewById(R.id.tx_rv).setOnClickListener((v) -> startActivity(new Intent(MainActivity.this, TestRVActivity.class)));
 
-        findViewById(R.id.tx_ts).setOnClickListener((v) -> startActivity(new Intent(MainActivity.this, TransitionActivity.class)));
+        findViewById(R.id.tx_ts).setOnClickListener((v) -> {
+                    Intent intent = new Intent(MainActivity.this, TransitionActivity.class);
+                    startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
+                }
+        );
 
 //        //内
 //        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
@@ -190,18 +195,18 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public boolean queueIdle() {
                     // UI第一帧绘制完成（可以理解为页面可见）
-                    Log.d(TAG, "queueIdle: "+Thread.currentThread().getName());
+                    Log.d(TAG, "queueIdle: " + Thread.currentThread().getName());
                     return false;
                 }
             });
         }
 
-//        Transition slide = TransitionInflater.from(this).inflateTransition(R.transition.activity_slide);
-//        getWindow().setExitTransition(slide);
-
-        Slide slide = new Slide();
-        slide.setDuration(1000);
+        Transition slide = TransitionInflater.from(this).inflateTransition(R.transition.activity_slide);
         getWindow().setExitTransition(slide);
+
+//        Slide slide = new Slide();
+//        slide.setDuration(1000);
+//        getWindow().setExitTransition(slide);
 
     }
 }
