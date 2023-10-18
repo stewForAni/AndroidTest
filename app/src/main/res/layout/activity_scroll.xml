@@ -72,6 +72,14 @@
         android:gravity="center">
 
         <View
+            android:id="@+id/stew"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@color/purple_700" />
+
+        <View
+            android:layout_marginTop="10dp"
+            android:id="@+id/stew1"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:background="@color/purple_700" />

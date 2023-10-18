@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -41,6 +42,15 @@ public class TestViewScrollActivity extends AppCompatActivity {
         view1 = findViewById(R.id.view1);
         view2 = findViewById(R.id.view2);
         view3 = findViewById(R.id.view3);
+
+        Button btn =findViewById(R.id.btn1);
+        View stew = findViewById(R.id.stew);
+
+        btn.setOnClickListener(v -> {
+            Log.d(TAG, "onClick: 3333");
+            //stew.scrollTo(-30,-30);
+            view3.smoothScroll(-300,-300,4000);
+        });
 
         view3.setOnClickListener(v -> {
             Log.d(TAG, "onClick: 3333");
