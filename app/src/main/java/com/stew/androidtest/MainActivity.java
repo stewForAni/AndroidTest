@@ -22,6 +22,7 @@ import com.stew.androidtest.testforaidl.TestAIDLActivity;
 import com.stew.androidtest.testforasm.TestAsmActivity;
 import com.stew.androidtest.testforbinder.TestBinderActivity;
 import com.stew.androidtest.testforcontentprovider.TestProvActivity;
+import com.stew.androidtest.testforcrash.TestCrashActivity;
 import com.stew.androidtest.testfordagger2.TestDagger2Activity;
 import com.stew.androidtest.testforhilt.TestHiltActivity;
 import com.stew.androidtest.testforhook.HookActivity;
@@ -126,6 +127,9 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.tx_view).setOnClickListener((v) -> startActivity(new Intent(MainActivity.this, TestViewActivity.class)));
 
         findViewById(R.id.tx_rv).setOnClickListener((v) -> startActivity(new Intent(MainActivity.this, TestRVActivity.class)));
+
+        findViewById(R.id.tx_crash).setOnClickListener((v) -> startActivity(new Intent(MainActivity.this, TestCrashActivity.class)));
+
 
         findViewById(R.id.tx_ts).setOnClickListener((v) -> {
                     Intent intent = new Intent(MainActivity.this, TransitionActivity.class);

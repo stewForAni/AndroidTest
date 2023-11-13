@@ -3,6 +3,7 @@ package com.stew.androidtest;
 import android.app.Application;
 import android.util.Log;
 
+import com.stew.androidtest.testforcrash.CrashHandler;
 import com.stew.androidtest.util.AppLogUtil;
 import com.stew.androidtest.util.CommonUtil;
 
@@ -28,6 +29,7 @@ public class MyApplication extends Application {
         instance = this;
         CommonUtil.init(instance);
         AppLogUtil.init(instance);
+        CrashHandler.getInstance().init();
     }
 
 
