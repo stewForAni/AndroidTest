@@ -65,7 +65,7 @@
     <TextView
         android:id="@+id/tx_listView"
         style="@style/main_text_style"
-        android:text="ViewPager+ListView HV Conflict" />
+        android:text="HV Conflict" />
 
     <TextView
         android:id="@+id/tx_rv"
@@ -75,7 +75,7 @@
     <TextView
         android:id="@+id/tx_scrollView"
         style="@style/main_text_style"
-        android:text="ScrollView+ListView VV Conflict" />
+        android:text="VV Conflict" />
 
     <TextView
         android:id="@+id/tx_view"
